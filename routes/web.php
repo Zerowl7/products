@@ -21,7 +21,10 @@ use Illuminate\Support\Facades\Mail;
 // панель юзеров
 Route::get('/', [PostController::class, 'index']);
 Route::get('/detail/{post}',[PostController::class, 'detailPost']);
+
+// Создание
 Route::get('/new', [PostController::class, 'create']);
+Route::post('/posts', [PostController::class, 'store']);
 
 // Сообщения
 Route::get('/email',[PostController::class,'viewEmail'])->name('view.email');
