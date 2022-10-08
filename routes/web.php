@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\EmailsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// панель юзеров
+Route::get('/', [PostController::class, 'index']);
+Route::get('/detail/{post}',[PostController::class, 'detailPost']);
+Route::get('/new', [PostController::class, 'create']);
+
+// Сообщения
+Route::get('/email',[PostController::class,'viewEmail'])->name('view.email');
+Route::post('/send-email',[EmailsController::class,'create'])->name('view.create');
+
+
+// добавим поиск
+Route::get('/search', [PostController::class, 'search'])->name('projects.search');
+
+
+    

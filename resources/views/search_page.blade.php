@@ -2,31 +2,15 @@
 @section('content')
     <main>
 
-      
-
-        <section id="image" class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Добро пожаловать!</h1>
-                    <p class="lead text-muted">Подпишитесь на нашу рассылку</p>
-                    <p>
-                        <a href="{{ route('view.email') }}" class="btn btn-primary my-2">Подписаться</a>
-                        <button onclick="show_hide()" class="btn btn-secondary my-2">Отказаться</button>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <script src="{{ asset('/main.js') }}"></script>
-
-
-
-
+        <h1 class="text-center mt-5"> Поиск по постам</h1>
         <div class="album py-5 bg-light">
             <div class="container">
 
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    @foreach ($posts as $post)
+
+
+                    @if ($searched_items)
+                    @foreach ($searched_items as $post)
                         <div class="col">
                             <div class="card shadow-sm">
                                 <a href="/detail/{{ $post->id }}">
@@ -50,6 +34,9 @@
                             </div>
                         </div>
                     @endforeach
+                    @endif
+
+
                 </div>
             </div>
         </div>
